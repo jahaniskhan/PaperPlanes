@@ -46,19 +46,19 @@ runSimulate :: Entity -> Entity -> [Position] -> Float -> IO ()
 runSimulate drone target path time = do
     putStrLn $ "Simulation Time" ++ show time
     putStrLn $ "Drone Position" ++ show (entityPosition drone)
-
-    putStrLn "run simulate called"
-
+    putStrLn $ "Target Position" ++ show(entityPosition target)
+    putStrLn $ "Target Velocity" ++ show(entityVelocity target)
 
     -- updated based on time
     let updatedTarget = updateTarget path (realToFrac time) target
-    putStrLn "updated target"
     let chasingDrone = chase drone updatedTarget
-    putStrLn "drone chasing target"
     let updateDrone = updateEntity chasingDrone (realToFrac dt)
-    putStrLn "drone updated"
-    putStrLn $ "Drone Position" ++ show (entityPosition updateDrone)
-    putStrLn $ "drone velocity" ++ show (entityVelocity updateDrone)
+
+    putStrLn $ "Updated Drone Position" ++ show (entityPosition updateDrone)
+    putStrLn $ "Updated Drone Velocity" ++ show (entityVelocity updateDrone)
+    putStrLn $ "Updated Target Position" ++ show (entityPosition updatedTarget)
+    putStrLn $ "Updated Target Velocity" ++ show (entityVelocity updatedTarget)
+    
     if time >= maxSimulationTime 
       then putStrLn "Simulation Complete"
       else runSimulate updateDrone updatedTarget path (time + realToFrac dt)

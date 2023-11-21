@@ -79,7 +79,7 @@ generateTargetPath seed = do
    
 
 
-updateTarget :: [Position] -> Float -> Entity -> Entity
+updateTarget :: [Position] -> Float -> Float -> Entity -> Entity
 updateTarget path time maxTime target = 
     -- we need to update target's postion based o nthe time and the path 
     case path of 
@@ -116,7 +116,7 @@ simulate drone target seed currentTime maxTime
             let chasingDrone = chase noisyDrone noisyTarget
             let updatedDrone = updateEntity chasingDrone (realToFrac dt)
             putStrLn $ "updated drone position" ++ show (entityPosition updatedDrone)
-            let updatedTarget' = updateTarget path (realToFrac currentTime) updatedTarget
+            let updatedTarget' = updateTarget path (realToFrac currentTime) maxTime updatedTarget
             putStrLn $ "updated drone position" ++ show (entityPosition updatedTarget')
 
             --recursive call with updated entities and incremented seed

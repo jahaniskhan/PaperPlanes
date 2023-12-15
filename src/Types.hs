@@ -6,7 +6,6 @@ import Graphics.Gloss.Data.Color
 -- | represents a position in R3
 data Position = Position { xPos :: Double
                          , yPos :: Double
-                         , zPos :: Double
                          } deriving (Show, Eq)
 -- eq means that we can compare two positions for equality
 -- deriving meaning that we can derive the show and eq instances for Position
@@ -14,13 +13,11 @@ data Position = Position { xPos :: Double
 -- |represents a velocity in R3
 data Velocity = Velocity { xVel :: Double
                          , yVel :: Double
-                         , zVel :: Double
                          } deriving (Show, Eq)
 
 -- |reperesnts acceleration
 data Acceleration = Acceleration { xAcc :: Double
                                  , yAcc :: Double
-                                 , zAcc :: Double
                                  } deriving (Show, Eq)
 
 data Entity  = Entity{

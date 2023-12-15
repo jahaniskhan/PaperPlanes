@@ -12,7 +12,7 @@ import Graphics.Gloss.Data.Color(red,blue,green, Color)
 
 -- | The main entry point.
 initializeEntity :: Position -> Velocity -> Maybe Color-> Entity 
-initializeEntity pos vel mColor = Entity pos vel (Acceleration 1 1 1) (fromMaybe defaultColor mColor)
+initializeEntity pos vel mColor = Entity pos vel (Acceleration 1 1) (fromMaybe defaultColor mColor)
 
 defaultColor :: Color
 defaultColor = green
@@ -27,7 +27,7 @@ maxSimulationTime :: Float
 maxSimulationTime = 10
 
 someConstantVelocity :: Velocity
-someConstantVelocity = Velocity 1 1 1
+someConstantVelocity = Velocity 1 1 
 
 updateTarget :: [Position] -> Float -> Entity -> Entity
 updateTarget path time target = 
@@ -68,9 +68,9 @@ main = do
   MyLib.someFunc
   animateSimulation
 
-  let initialDrone = initializeEntity (Position 10 10 0) (Velocity 0 0 0) (Just red)
+  let initialDrone = initializeEntity (Position 10 10) (Velocity 0 0) (Just red)
   putStrLn $ "Initial Drone" ++ show initialDrone
-  let initialTarget = initializeEntity (Position 100 100 0) (Velocity 0 0 0) (Just blue)
+  let initialTarget = initializeEntity (Position 100 100) (Velocity 0 0) (Just blue)
   --initialized conditions for drone and target
   generatedPath <- generateTargetPath 42
   let targetPath = cycle generatedPath

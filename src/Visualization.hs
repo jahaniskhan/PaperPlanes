@@ -17,7 +17,7 @@ background = white
 -- Convert an entity to a picture
 -- we need a label to test if it is a drone or a target
 drawEntityWithLabel :: Entity -> Picture
-drawEntityWithLabel (Entity (Position x y z) _ _ entityzcolor) = 
+drawEntityWithLabel (Entity (Position x y) _ _ entityzcolor) = 
     let entityPic = translate (realToFrac x) (realToFrac y) $ color entityzcolor $ circleSolid 10
         label = if entityzcolor == red then "Drone" else "Target"
         textPic = translate (realToFrac x + 10) (realToFrac y) $ scale 0.1 0.1 $color black $ text label
